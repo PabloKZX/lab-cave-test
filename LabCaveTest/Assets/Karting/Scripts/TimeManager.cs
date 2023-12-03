@@ -1,6 +1,4 @@
-﻿﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
 
 public class TimeManager : MonoBehaviour
@@ -11,6 +9,9 @@ public class TimeManager : MonoBehaviour
     public bool IsOver { get; private set; }
 
     private bool raceStarted;
+    
+    public const float kInvalidTime = -Mathf.Infinity;
+    public static float BestTime = kInvalidTime;
 
     public static Action<float> OnAdjustTime;
     public static Action<int, bool, GameMode> OnSetTime;

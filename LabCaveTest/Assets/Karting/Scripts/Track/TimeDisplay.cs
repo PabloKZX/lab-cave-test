@@ -9,7 +9,6 @@ namespace KartGame.Track
     /// </summary>
     public class TimeDisplay : MonoBehaviour
     {
-
         [Tooltip("Display the time for the current lap.")]
         public TimeDisplayItem currentLapText;
         [Tooltip("Display the time for the best lap.")]
@@ -101,7 +100,14 @@ namespace KartGame.Track
                 return;
             }
 
-            finishedLapTimes.Add(Time.time - currentLapStartTime);
+            var lapTime = Time.time - currentLapStartTime;
+
+            if(lapTime > TimeManager.BestTime)
+            {
+                TimeManager.BestTime = lapTime;
+            }
+
+            finishedLapTimes.Add(lapTime);
             currentLapStartTime = Time.time;
             
             AddFinishedLapTime(finishedLapTimes.Count - 1);
