@@ -133,7 +133,7 @@ namespace KartGame.Track
         {
             TimeDisplayItem newItem = GetItem(lap);
 
-            newItem.SetText(getTimeString(finishedLapTimes[lap]));
+            newItem.SetText(TimeUtils.GetTimeString(finishedLapTimes[lap]));
             newItem.SetTitle($"Lap {lap+1}:");
             newItem.gameObject.SetActive(true);
         }
@@ -142,23 +142,14 @@ namespace KartGame.Track
         {
             float currentLapTime = Time.time - currentLapStartTime;
             if (currentLapTime < 0.01f) return "0:00";
-            return getTimeString(currentLapTime);
+            return TimeUtils.GetTimeString(currentLapTime);
         }
-    
-        string getTimeString(float time){
-            int timeInt = (int)(time);
-            int minutes = timeInt / 60;
-            int seconds = timeInt % 60;
-            float fraction = (time * 100) % 100;
-            if (fraction > 99) fraction = 99;
-            return string.Format("{0}:{1:00}:{2:00}", minutes, seconds, fraction);
-        }
-
+        
         string DisplaySessionBestLapTime()
         {
             int bestLap = getBestLap();
             if (bestLap < 0) return "";
-            return getTimeString(finishedLapTimes[bestLap]);
+            return TimeUtils.GetTimeString(finishedLapTimes[bestLap]);
         }
     }
 }
