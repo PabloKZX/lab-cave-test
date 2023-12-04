@@ -4,6 +4,28 @@ public class Collectable : MonoBehaviour
 {
     [SerializeField] CollectableType _type;
     [SerializeField] LayerMask _layerMask;
+    [SerializeField] bool _destroyOnCollect;
+    [SerializeField] AudioClip _collectSound;
+    
+    void Collect(ICollector collector)
+    {
+        if(collector.CollectableType != _type)
+        {
+            return;
+        }
+        
+        collector.OnPickUp();
+
+        if(_collectSound != null)
+        {
+            AudioUtility.CreateSFX(_collectSound, transform.position, AudioUtility.AudioGroups.Pickup, 0f);
+        }
+
+        if(_destroyOnCollect)
+        {
+            Destroy(gameObject);
+        }
+    }
     
     void OnTriggerEnter(Collider other)
     {
@@ -17,11 +39,8 @@ public class Collectable : MonoBehaviour
         {
             return;
         }
-        
-        if(collector.CollectableType == _type)
-        {
-            collector.OnPickUp();
-        }
+
+        Collect(collector);
     }
 }
 

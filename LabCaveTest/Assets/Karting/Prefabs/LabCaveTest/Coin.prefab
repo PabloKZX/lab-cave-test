@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2337171282456974547}
   - component: {fileID: 945136756116365465}
   - component: {fileID: 2173370054301901462}
-  - component: {fileID: 255853440116566567}
   m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
@@ -84,21 +83,6 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &255853440116566567
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4650354842168650423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 47fa26e3c88c40644b2646f78b64b3bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _speedX: 60
-  _speedY: 60
-  _speedZ: 0
 --- !u!1 &8604534964301153935
 GameObject:
   m_ObjectHideFlags: 0
@@ -110,6 +94,7 @@ GameObject:
   - component: {fileID: 5106816447473734330}
   - component: {fileID: 255853440116566566}
   - component: {fileID: 255853440116566569}
+  - component: {fileID: 46216976725123905}
   m_Layer: 0
   m_Name: Coin
   m_TagString: Untagged
@@ -149,6 +134,8 @@ MonoBehaviour:
   _layerMask:
     serializedVersion: 2
     m_Bits: 8192
+  _destroyOnCollect: 1
+  _collectSound: {fileID: 8300000, guid: c1d1b8740810641508a7156b10ff59f2, type: 3}
 --- !u!65 &255853440116566569
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -162,3 +149,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.56, y: 1.43, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &46216976725123905
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8604534964301153935}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47fa26e3c88c40644b2646f78b64b3bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _speedX: 60
+  _speedY: 60
+  _speedZ: 0
+  _addRandomOffset: 1

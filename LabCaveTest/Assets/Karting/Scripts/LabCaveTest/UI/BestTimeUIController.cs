@@ -12,7 +12,9 @@ public class BestTimeUIController : MonoBehaviour
 
     void UpdateBestTime()
     {
-        var bestTime = TimeManager.BestTime;
+        var model = PlayerModelProvider.Instance.Model;
+        
+        var bestTime = model.BestTime;
         if(bestTime == TimeManager.kInvalidTime)
         {
             gameObject.SetActive(false);

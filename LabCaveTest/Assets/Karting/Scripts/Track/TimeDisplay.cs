@@ -102,9 +102,11 @@ namespace KartGame.Track
 
             var lapTime = Time.time - currentLapStartTime;
 
-            if(lapTime > TimeManager.BestTime)
+            var model = PlayerModelProvider.Instance.Model;
+            
+            if(lapTime > model.BestTime)
             {
-                TimeManager.BestTime = lapTime;
+                model.BestTime = lapTime;
             }
 
             finishedLapTimes.Add(lapTime);

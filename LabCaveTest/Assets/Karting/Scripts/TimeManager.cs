@@ -11,7 +11,6 @@ public class TimeManager : MonoBehaviour
     private bool raceStarted;
     
     public const float kInvalidTime = -Mathf.Infinity;
-    public static float BestTime = kInvalidTime;
 
     public static Action<float> OnAdjustTime;
     public static Action<int, bool, GameMode> OnSetTime;
