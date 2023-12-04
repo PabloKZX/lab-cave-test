@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Collectable : MonoBehaviour
@@ -6,6 +7,8 @@ public class Collectable : MonoBehaviour
     [SerializeField] LayerMask _layerMask;
     [SerializeField] bool _destroyOnCollect;
     [SerializeField] AudioClip _collectSound;
+
+    public event Action OnCollected;
     
     void Collect(ICollector collector)
     {
@@ -20,6 +23,8 @@ public class Collectable : MonoBehaviour
         {
             AudioUtility.CreateSFX(_collectSound, transform.position, AudioUtility.AudioGroups.Pickup, 0f);
         }
+        
+        OnCollected?.Invoke();
 
         if(_destroyOnCollect)
         {
