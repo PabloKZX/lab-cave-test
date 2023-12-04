@@ -8,7 +8,7 @@
  - `TimeDisplay.cs`
  - `TimeManager.cs`
  #### Escenas
- - `IntroMenu.unity
+ - `IntroMenu.unity`
  - `MainScene.unity`
  
  ### Añadido al proyecto
