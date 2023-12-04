@@ -102,12 +102,7 @@ namespace KartGame.Track
 
             var lapTime = Time.time - currentLapStartTime;
 
-            var model = PlayerModelProvider.Instance.Model;
-            
-            if(lapTime > model.BestTime)
-            {
-                model.BestTime = lapTime;
-            }
+            UpdateLapTime(lapTime);
 
             finishedLapTimes.Add(lapTime);
             currentLapStartTime = Time.time;
@@ -121,6 +116,17 @@ namespace KartGame.Track
             {
                 lapsOver = true;
                 currentLapText.gameObject.SetActive(false);
+            }
+        }
+
+        void UpdateLapTime(float lapTime)
+        {
+            var model = PlayerModelProvider.Instance.Model;
+            
+            if(lapTime < model.BestTime)
+            {
+                DisplaysManager.Instance.SendUpdateEvent(DisplayType.NewRecord);
+                model.BestTime = lapTime;
             }
         }
 

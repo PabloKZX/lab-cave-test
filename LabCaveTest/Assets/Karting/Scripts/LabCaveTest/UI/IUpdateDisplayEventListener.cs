@@ -1,6 +1,6 @@
 public interface IUpdateDisplayEventListener
 {
-    public CollectableType CollectableType { get; }
+    public DisplayType DisplayType { get; }
 
-    public void OnUpdateReceived(int amount);
+    public void OnUpdateReceived(string text);
 }

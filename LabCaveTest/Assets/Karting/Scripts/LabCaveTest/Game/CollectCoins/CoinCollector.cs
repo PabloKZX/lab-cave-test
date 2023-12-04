@@ -14,6 +14,6 @@ public class CoinCollector : MonoBehaviour, ICollector
         ++_coinsAmount;
         ++model.TotalCoinsAmount;
         
-        CollectablesDisplayManager.Instance.SendUpdateEvent(CollectableType.Coin, CollectablesAmount);
+        DisplaysManager.Instance.SendUpdateEvent(DisplayType.Coins, CollectablesAmount.ToString());
     }
 }

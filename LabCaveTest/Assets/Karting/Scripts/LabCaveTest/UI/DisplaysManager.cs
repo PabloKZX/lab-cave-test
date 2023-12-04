@@ -1,9 +1,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CollectablesDisplayManager : MonoBehaviour
+public class DisplaysManager : MonoBehaviour
 {
-    public static CollectablesDisplayManager Instance
+    public static DisplaysManager Instance
     {
         get
         {
@@ -12,19 +12,19 @@ public class CollectablesDisplayManager : MonoBehaviour
                 return _instance;
             }
 
-            _instance = FindObjectOfType<CollectablesDisplayManager>();
+            _instance = FindObjectOfType<DisplaysManager>();
             if(_instance != null)
             {
                 return _instance;
             }
 
             var obj = new GameObject("Collectables Display Manager");
-            _instance = obj.AddComponent<CollectablesDisplayManager>();
+            _instance = obj.AddComponent<DisplaysManager>();
             return _instance;
         }
     }
 
-    static CollectablesDisplayManager _instance;
+    static DisplaysManager _instance;
     
     List<IUpdateDisplayEventListener> _displays = new();
     
@@ -45,16 +45,16 @@ public class CollectablesDisplayManager : MonoBehaviour
         }
     }
 
-    public void SendUpdateEvent(CollectableType type, int amount)
+    public void SendUpdateEvent(DisplayType type, string text = "")
     {
         foreach (var display in _displays)
         {
-            if(display.CollectableType != type)
+            if(display.DisplayType != type)
             {
                 continue;
             }
             
-            display.OnUpdateReceived(amount);
+            display.OnUpdateReceived(text);
         }
     }
 }

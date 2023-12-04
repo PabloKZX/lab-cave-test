@@ -3,23 +3,23 @@ using UnityEngine;
 
 public class CollectableDisplay : MonoBehaviour, IUpdateDisplayEventListener
 {
-    [SerializeField] CollectableType _type;
+    [SerializeField] DisplayType _type;
     [SerializeField] TextMeshProUGUI _amountText;
     
-    public CollectableType CollectableType => _type;
+    public DisplayType DisplayType => _type;
 
     void OnEnable()
     {
-        CollectablesDisplayManager.Instance.Register(this);
+        DisplaysManager.Instance.Register(this);
     }
 
     void OnDisable()
     {
-        CollectablesDisplayManager.Instance.Unregister(this);
+        DisplaysManager.Instance.Unregister(this);
     }
 
-    public void OnUpdateReceived(int amount)
+    public void OnUpdateReceived(string amount)
     {
-        _amountText.text = amount.ToString();
+        _amountText.text = amount;
     }
 }
